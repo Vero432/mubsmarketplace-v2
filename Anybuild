@@ -1,0 +1,15 @@
+load("//anybuild/tools:laravel.bzl", "laravel_build", "laravel_config", "laravel_serve")
+
+config = laravel_config(
+    schema = 1,
+    php_framework = "laravel",
+    php_version = "8.4",
+    composer_enable = True,
+    composer_build_script = "post-update-cmd",
+    node_package_manager = "npm",
+    node_version = "24",
+)
+
+build = laravel_build(config)
+
+laravel_serve(config, build, name = "mubsmarketplace")
